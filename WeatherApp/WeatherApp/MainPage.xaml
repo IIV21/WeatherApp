@@ -11,7 +11,7 @@
                Text="Your current location is : "
                FontSize="20"
                FontFamily="Bold"
-               IsVisible="false"
+               IsVisible="{Binding isVisible}"
                TextColor="AliceBlue"/>
         
         <Label Text="{Binding Name, StringFormat='Name: {0}'}"
@@ -41,18 +41,16 @@
         <Button Text="Random Location"
                 Command="{Binding RandomLocation}"
                 BackgroundColor="Chocolate"
-                Clicked="RLButton_Clicked"
                 Margin="20"/>
-        <Button Text="Get Current Location"
+            <Button Text="Get Current Location"
                 Margin="20"
                 Command="{Binding CurrentLocation}"
                 BackgroundColor="Chocolate"
-                Clicked="CLButton_Clicked"/>
+                 />
             <Button Text="Get Bucharest Weather"
                 Margin="20"
                 Command="{Binding BucharestLocation}"
-                BackgroundColor="Chocolate"
-                Clicked="GBWButton_Clicked"/>
+                BackgroundColor="Chocolate"/>
 
         </StackLayout>
     </Frame>

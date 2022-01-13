@@ -19,7 +19,7 @@ namespace WeatherApp
             BindingContext = new ViewModels.MainPageViewModel();
         }
 
-        private void CLButton_Clicked(object sender, EventArgs e)
+      /*  private void CLButton_Clicked(object sender, EventArgs e)
         {
             CurrentLocationLabel.IsVisible = true;
         }
@@ -33,6 +33,6 @@ namespace WeatherApp
         {
             CurrentLocationLabel.Text = "Bucharest Weather:";
             CurrentLocationLabel.IsVisible = true;
-        }
+        }*/
     }
 }

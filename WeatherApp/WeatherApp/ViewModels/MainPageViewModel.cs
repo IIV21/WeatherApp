@@ -27,7 +27,7 @@ namespace WeatherApp.ViewModels
 
         public string Name { get; set; }
 
-        public string isVisible { get; set; }
+        public bool isVisible { get; set; }
 
         Random r = new Random();
         
@@ -47,6 +47,7 @@ namespace WeatherApp.ViewModels
 
             RandomLocation = new Command(async () =>
             {
+                isVisible = false;
                 WeatherModel = await Services.APIComunication.GetWeatherAsync($"lat={r.Next(-90,90)}&lon={r.Next(-180,180)}&appid={APIKey}");
                 Weather = WeatherModel.Weather[0];
                 Sys = WeatherModel.Sys;
@@ -57,10 +58,12 @@ namespace WeatherApp.ViewModels
                 OnPropertyChanged(nameof(Sys));
                 OnPropertyChanged(nameof(Main));
                 OnPropertyChanged(nameof(Name));
+                OnPropertyChanged(nameof(isVisible));
 
             });
             BucharestLocation = new Command(async () =>
             {
+                isVisible = false;
                 WeatherModel = await Services.APIComunication.GetWeatherAsync($"lat={44}&lon={26}&appid={APIKey}");
                 Weather = WeatherModel.Weather[0];
                 Sys = WeatherModel.Sys;
@@ -71,6 +74,7 @@ namespace WeatherApp.ViewModels
                 OnPropertyChanged(nameof(Sys));
                 OnPropertyChanged(nameof(Main));
                 OnPropertyChanged(nameof(Name));
+                OnPropertyChanged(nameof(isVisible));
 
             });
             CurrentLocation = new Command(async () =>
@@ -81,7 +85,7 @@ namespace WeatherApp.ViewModels
 
                     if (location != null)
                     {
-                        isVisible = "true";
+                        isVisible = true;
                         WeatherModel = await Services.APIComunication.GetWeatherAsync($"lat={Convert.ToInt32(location.Latitude)}&lon={Convert.ToInt32(location.Longitude)}&appid={APIKey}");
                         Weather = WeatherModel.Weather[0];
                         Sys = WeatherModel.Sys;
@@ -92,6 +96,7 @@ namespace WeatherApp.ViewModels
                         OnPropertyChanged(nameof(Sys));
                         OnPropertyChanged(nameof(Main));
                         OnPropertyChanged(nameof(Name));
+                        OnPropertyChanged(nameof(isVisible));
                     }
                 }
                 catch (FeatureNotSupportedException fnsEx)
