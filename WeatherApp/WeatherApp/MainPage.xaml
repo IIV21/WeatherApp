@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.MainPage">
+    <Frame BackgroundColor="RoyalBlue">
+    <StackLayout 
+                 Padding="20,40,20,200"
+                 BackgroundColor="DarkBlue">
+
+        <Label x:Name="CurrentLocationLabel" 
+               Text="Your current location is : "
+               FontSize="20"
+               FontFamily="Bold"
+               IsVisible="false"
+               TextColor="AliceBlue"/>
+        
+        <Label Text="{Binding Name, StringFormat='Name: {0}'}"
+               FontSize="20"
+               HorizontalOptions="Start"
+               VerticalOptions="Start"
+               TextColor="AliceBlue"/>
+
+            <Label Text="{Binding Sys.Country, StringFormat='Country: {0}'}"
+                   FontSize="20"
+                   TextColor="AliceBlue"/>
+        
+        <Label Text="{Binding Main.TempC, StringFormat='{0:F2}&#186;C'}"
+               FontSize="20"
+               TextColor="AliceBlue"/>
+        
+        <Image Source="{Binding Weather.IconURL}"/>
+
+            <Label Text="{Binding Weather.Main}"
+                   FontSize="20"
+                   TextColor="AliceBlue"/>
+
+            <Label Text="{Binding Weather.Description}"
+                   FontSize="20"
+                   TextColor="AliceBlue"/>
+
+        <Button Text="Random Location"
+                Command="{Binding RandomLocation}"
+                BackgroundColor="Chocolate"
+                Clicked="RLButton_Clicked"
+                Margin="20"/>
+        <Button Text="Get Current Location"
+                Margin="20"
+                Command="{Binding CurrentLocation}"
+                BackgroundColor="Chocolate"
+                Clicked="CLButton_Clicked"/>
+            <Button Text="Get Bucharest Weather"
+                Margin="20"
+                Command="{Binding BucharestLocation}"
+                BackgroundColor="Chocolate"
+                Clicked="GBWButton_Clicked"/>
+
+        </StackLayout>
+    </Frame>
+</ContentPage>
